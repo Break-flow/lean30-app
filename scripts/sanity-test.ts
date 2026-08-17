@@ -66,6 +66,41 @@ assert(weekOfDay(1) === 1 && weekOfDay(7) === 1, 'week1');
 assert(weekOfDay(8) === 2 && weekOfDay(14) === 2, 'week2');
 assert(weekOfDay(22) === 4 && weekOfDay(30) === 5, 'week4/5 (30th is week 5 by arith)');
 
+// 7. all four workout circuits A–D present with 5+ exercises each
+const expectedCircuits = ['workout-a', 'workout-b', 'workout-c', 'workout-d'];
+for (const id of expectedCircuits) {
+  const w = workouts.find((x) => x.id === id);
+  assert(Boolean(w), `circuit ${id} missing`);
+  assert(Boolean(w && w.exercises.length >= 5), `circuit ${id} has <5 exercises`);
+}
+assert(workouts.length >= 4, `expected >=4 circuits, got ${workouts.length}`);
+
+// 8. every workout task in the challenge resolves to a real circuit
+for (const d of challengeDays) {
+  const workoutTask = d.tasks.find((t) => t.type === 'workout');
+  if (workoutTask?.refId) {
+    assert(
+      workouts.some((w) => w.id === workoutTask.refId),
+      `day ${d.day}: workout ref missing ${workoutTask.refId}`,
+    );
+  }
+}
+
+// 9. premium recipe categories all represented (soups, low carb, boosters, teas)
+const ids = Object.keys(recipesById);
+const hasSoups = ids.some((id) => id.startsWith('soup-'));
+const hasLowCarb = ids.some((id) => id.startsWith('lowcarb-'));
+const hasBoosters = ids.some((id) => id.startsWith('booster-'));
+const hasTeas = ids.some((id) => id.startsWith('tea-'));
+const hasDetox = ids.some((id) => id.startsWith('detox-'));
+const hasSweets = ids.some((id) => id.startsWith('sweet-'));
+assert(hasSoups, 'content: soups missing');
+assert(hasLowCarb, 'content: low carb missing');
+assert(hasBoosters, 'content: boosters missing');
+assert(hasTeas, 'content: teas missing');
+assert(hasDetox, 'content: detox missing');
+assert(hasSweets, 'content: sweets missing');
+
 console.log(`\n${dayCount()} days, ${Object.keys(recipesById).length} recipes`);
 console.log(fails === 0 ? 'ALL TESTS PASSED' : `${fails} FAILURES`);
 

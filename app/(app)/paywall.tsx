@@ -133,13 +133,17 @@ export default function Paywall() {
               {t('paywall.legalLine')}
             </Text>
             <View style={styles.legalRow}>
-              <Text variant="caption" color="#9AA39A">
-                {t('paywall.terms')}
-              </Text>
+              <Pressable onPress={() => router.push('/terms')}>
+                <Text variant="caption" color="#9AA39A" style={styles.legalLink}>
+                  {t('paywall.terms')}
+                </Text>
+              </Pressable>
               <View style={styles.legalDot} />
-              <Text variant="caption" color="#9AA39A">
-                {t('paywall.privacy')}
-              </Text>
+              <Pressable onPress={() => router.push('/privacy')}>
+                <Text variant="caption" color="#9AA39A" style={styles.legalLink}>
+                  {t('paywall.privacy')}
+                </Text>
+              </Pressable>
             </View>
           </>
         )}
@@ -204,6 +208,7 @@ const styles = StyleSheet.create({
   legal: { marginTop: spacing.lg },
   legalRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 },
   legalDot: { width: 3, height: 3, borderRadius: 1.5, backgroundColor: '#6E766E' },
+  legalLink: { textDecorationLine: 'underline' },
   premiumActive: { alignItems: 'center', paddingTop: spacing.xl },
   fullBtn: { alignSelf: 'stretch', marginTop: spacing.xl },
 });

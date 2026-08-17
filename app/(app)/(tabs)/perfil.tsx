@@ -397,6 +397,30 @@ export default function Perfil() {
 
       <Card style={styles.card}>
         <Text variant="eyebrow" color="#9AA39A" uppercase>
+          {t('profile.legal')}
+        </Text>
+        <Pressable onPress={() => router.push('/privacy')} style={styles.legalItem}>
+          <Text variant="body" color="#FFFFFF" style={{ flex: 1 }}>
+            {t('profile.privacyPolicy')}
+          </Text>
+          <Ionicons name="chevron-forward-outline" size={18} color="#9AA39A" />
+        </Pressable>
+        <Pressable onPress={() => router.push('/terms')} style={styles.legalItem}>
+          <Text variant="body" color="#FFFFFF" style={{ flex: 1 }}>
+            {t('profile.terms')}
+          </Text>
+          <Ionicons name="chevron-forward-outline" size={18} color="#9AA39A" />
+        </Pressable>
+        <Pressable onPress={() => router.push('/disclaimer')} style={styles.legalItem}>
+          <Text variant="body" color="#FFFFFF" style={{ flex: 1 }}>
+            {t('profile.disclaimer')}
+          </Text>
+          <Ionicons name="chevron-forward-outline" size={18} color="#9AA39A" />
+        </Pressable>
+      </Card>
+
+      <Card style={styles.card}>
+        <Text variant="eyebrow" color="#9AA39A" uppercase>
           {t('profile.data')}
         </Text>
         <Pressable
@@ -436,7 +460,7 @@ export default function Perfil() {
 }
 
 const styles = StyleSheet.create({
-  content: { paddingBottom: 120 },
+  content: { paddingBottom: 220 },
   header: { paddingTop: spacing.lg, gap: 4 },
   card: { marginTop: spacing.lg },
   rowBetween: { flexDirection: 'row', alignItems: 'center', gap: spacing.md, marginTop: spacing.sm },
@@ -522,4 +546,13 @@ const styles = StyleSheet.create({
   },
   previewWrap: { flex: 1, backgroundColor: 'rgba(0,0,0,0.85)', alignItems: 'center', justifyContent: 'center' },
   previewImg: { width: '92%', height: '80%', borderRadius: 20 },
+  legalItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: spacing.sm,
+    paddingVertical: spacing.sm,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: 'rgba(255,255,255,0.06)',
+  },
 });

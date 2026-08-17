@@ -1,0 +1,112 @@
+import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useRouter } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
+import { Text } from '@/components/ui/Text';
+import { useI18n } from '@/i18n';
+import { layout, spacing } from '@/theme';
+
+export default function Terms() {
+  const router = useRouter();
+  const { t } = useI18n();
+
+  return (
+    <SafeAreaView style={styles.safe} edges={['bottom', 'top']}>
+      <View style={styles.top}>
+        <Pressable onPress={() => router.back()} style={styles.close}>
+          <Ionicons name="chevron-down" size={22} color="#FFFFFF" />
+        </Pressable>
+        <Text variant="eyebrow" color="#C6F135" uppercase>
+          {t('common.appName')}
+        </Text>
+        <View style={styles.spacer} />
+      </View>
+
+      <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
+        <Text variant="display" center style={{ marginBottom: spacing.lg }}>
+          {t('profile.terms')}
+        </Text>
+
+        <Text variant="body" color="#9AA39A" style={styles.paragraph}>
+          {t('terms.intro')}
+        </Text>
+
+        <Text variant="title" color="#FFFFFF" style={styles.sectionTitle}>
+          {t('terms.acceptance')}
+        </Text>
+        <Text variant="body" color="#9AA39A" style={styles.paragraph}>
+          {t('terms.acceptanceBody')}
+        </Text>
+
+        <Text variant="title" color="#FFFFFF" style={styles.sectionTitle}>
+          {t('terms.subscription')}
+        </Text>
+        <Text variant="body" color="#9AA39A" style={styles.paragraph}>
+          {t('terms.subscriptionBody')}
+        </Text>
+
+        <Text variant="title" color="#FFFFFF" style={styles.sectionTitle}>
+          {t('terms.cancellation')}
+        </Text>
+        <Text variant="body" color="#9AA39A" style={styles.paragraph}>
+          {t('terms.cancellationBody')}
+        </Text>
+
+        <Text variant="title" color="#FFFFFF" style={styles.sectionTitle}>
+          {t('terms.content')}
+        </Text>
+        <Text variant="body" color="#9AA39A" style={styles.paragraph}>
+          {t('terms.contentBody')}
+        </Text>
+
+        <Text variant="title" color="#FFFFFF" style={styles.sectionTitle}>
+          {t('terms.disclaimer')}
+        </Text>
+        <Text variant="body" color="#9AA39A" style={styles.paragraph}>
+          {t('terms.disclaimerBody')}
+        </Text>
+
+        <Text variant="title" color="#FFFFFF" style={styles.sectionTitle}>
+          {t('terms.limitation')}
+        </Text>
+        <Text variant="body" color="#9AA39A" style={styles.paragraph}>
+          {t('terms.limitationBody')}
+        </Text>
+
+        <Text variant="title" color="#FFFFFF" style={styles.sectionTitle}>
+          {t('terms.contact')}
+        </Text>
+        <Text variant="body" color="#9AA39A" style={styles.paragraph}>
+          {t('terms.contactBody')}
+        </Text>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  safe: { flex: 1, backgroundColor: '#0D0F0D' },
+  top: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: layout.contentPadding,
+    paddingTop: spacing.lg,
+  },
+  close: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: 'rgba(255,255,255,0.06)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  spacer: { width: 44 },
+  content: {
+    paddingHorizontal: layout.contentPadding,
+    paddingBottom: spacing.xl,
+    gap: spacing.md,
+  },
+  sectionTitle: { marginTop: spacing.xl, marginBottom: spacing.sm },
+  paragraph: { lineHeight: 24 },
+});

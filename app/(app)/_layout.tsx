@@ -16,6 +16,9 @@ export default function AppLayout() {
       <Stack.Screen name="water" options={{ presentation: 'modal', animation: 'fade' }} />
       <Stack.Screen name="shopping" options={{ presentation: 'card' }} />
       <Stack.Screen name="paywall" options={{ presentation: 'modal', animation: 'slide_from_bottom' }} />
+      <Stack.Screen name="privacy" options={{ presentation: 'card' }} />
+      <Stack.Screen name="terms" options={{ presentation: 'card' }} />
+      <Stack.Screen name="disclaimer" options={{ presentation: 'card' }} />
     </Stack>
   );
 }

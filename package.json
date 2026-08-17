@@ -8,6 +8,7 @@
     "@expo/vector-icons": "^15.0.2",
     "@react-native-async-storage/async-storage": "2.2.0",
     "@supabase/supabase-js": "^2.112.3",
+    "@sentry/react-native": "^8.0.0",
     "expo": "~57.0.13",
     "expo-blur": "~57.0.2",
     "expo-constants": "~57.0.11",
@@ -23,6 +24,7 @@
     "expo-status-bar": "~57.0.1",
     "i18next": "^26.3.6",
     "react": "19.2.3",
+    "react-dom": "19.2.3",
     "react-i18next": "^17.0.11",
     "react-native": "0.86.2",
     "react-native-gesture-handler": "~2.32.0",
@@ -45,9 +47,9 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web",
     "typecheck": "tsc --noEmit",
     "test": "tsx scripts/sanity-test.ts",
+    "test:flows": "tsx scripts/critical-flow-test.ts",
     "seed": "tsx scripts/seed.ts"
   },
   "private": true

@@ -31,21 +31,32 @@ Create `.env` with:
 EXPO_PUBLIC_RC_APPLE=appl_...
 EXPO_PUBLIC_RC_GOOGLE=goog_...
 
+# Optional crash reporting (Sentry)
+EXPO_PUBLIC_SENTRY_DSN=
+
 # Optional Supabase backend (rest/anon) — everything works local-first without it
 EXPO_PUBLIC_SUPABASE_URL=
 EXPO_PUBLIC_SUPABASE_ANON_KEY=
 ```
+
+> Note: `EXPO_PUBLIC_RC_APPLE` / `EXPO_PUBLIC_RC_GOOGLE` are the documented names.
+> The legacy `EXPO_PUBLIC_REVENUECAT_APPLE` / `EXPO_PUBLIC_REVENUECAT_GOOGLE` are still
+> supported as fallbacks.
 
 Products configured in RevenueCat dashboard: `lean30_monthly`, `lean30_yearly`; entitlement `premium`.
 
 ## Building
 
 ```bash
+npx eas init                 # required once — adds extra.eas.projectId to app.json
 npx eas build --platform android --profile preview
 npx eas build --platform ios --profile preview
 ```
 
 Bundle IDs: `com.lean30.app` (iOS + Android), scheme `lean30`.
+
+> The app is **mobile-first** (Expo Router on iOS/Android). Web is intentionally
+> not part of the build scope.
 
 ## Project layout
 

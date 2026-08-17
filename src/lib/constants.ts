@@ -8,10 +8,19 @@ export const SUPABASE_ENABLED = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
 export const REVENUECAT = {
   enabled: Boolean(
-    process.env.EXPO_PUBLIC_REVENUECAT_APPLE || process.env.EXPO_PUBLIC_REVENUECAT_GOOGLE
+    process.env.EXPO_PUBLIC_RC_APPLE ||
+      process.env.EXPO_PUBLIC_RC_GOOGLE ||
+      process.env.EXPO_PUBLIC_REVENUECAT_APPLE ||
+      process.env.EXPO_PUBLIC_REVENUECAT_GOOGLE
   ),
-  apple: process.env.EXPO_PUBLIC_REVENUECAT_APPLE ?? '',
-  google: process.env.EXPO_PUBLIC_REVENUECAT_GOOGLE ?? '',
+  apple:
+    process.env.EXPO_PUBLIC_RC_APPLE ??
+    process.env.EXPO_PUBLIC_REVENUECAT_APPLE ??
+    '',
+  google:
+    process.env.EXPO_PUBLIC_RC_GOOGLE ??
+    process.env.EXPO_PUBLIC_REVENUECAT_GOOGLE ??
+    '',
 };
 
 export const ENTITLEMENT_PREMIUM = 'premium';

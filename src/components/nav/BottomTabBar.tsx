@@ -1,6 +1,5 @@
 import React from 'react';
 import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
-import { BlurView } from 'expo-blur';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useI18n } from '@/i18n';
@@ -28,7 +27,7 @@ export function BottomTabBar({ state, navigation }: any) {
 
   return (
     <View style={[styles.wrap, { paddingBottom: insets.bottom }]}>
-      <BlurView intensity={40} tint="dark" style={styles.blur}>
+      <View style={styles.bar}>
         <View style={styles.row}>
           {state.routes.map((route: any, index: number) => {
             const focused = state.index === index;
@@ -67,7 +66,7 @@ export function BottomTabBar({ state, navigation }: any) {
             );
           })}
         </View>
-      </BlurView>
+      </View>
     </View>
   );
 }
@@ -78,15 +77,16 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
+    backgroundColor: '#0D0F0D',
+    borderTopWidth: 1,
+    borderTopColor: '#2A2E29',
     ...Platform.select({
       ios: { shadowColor: '#000', shadowOffset: { width: 0, height: -6 }, shadowOpacity: 0.25, shadowRadius: 14 },
       android: { elevation: 18 },
     }),
   },
-  blur: {
-    borderTopWidth: 1,
-    borderTopColor: '#2A2E29',
-    overflow: 'hidden',
+  bar: {
+    backgroundColor: '#0D0F0D',
   },
   row: {
     flexDirection: 'row',

@@ -38,6 +38,7 @@ export async function initI18n() {
     lng: saved,
     fallbackLng: 'en',
     interpolation: { escapeValue: false },
+    returnObjects: true,
     returnNull: false,
   });
 
@@ -54,6 +55,7 @@ export function getI18n() {
       lng: useSettings.getState().language,
       fallbackLng: 'en',
       interpolation: { escapeValue: false },
+      returnObjects: true,
     });
   }
   return i18next;

@@ -2,7 +2,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { scheduleDailyReminders, clearAllReminders, configureNotifications } from '@/lib/notifications';
-import { getI18n } from '@/i18n';
+
+function getI18n() {
+  const mod = require('@/i18n') as typeof import('@/i18n');
+  return mod.getI18n();
+}
 
 export type AppLanguage = 'en' | 'es' | 'fr' | 'pt';
 export type AppMode = 'dark' | 'light';
